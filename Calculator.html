@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    .a {
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    .input {
+      width: 320px;
+      height: 50px;
+      font-size: 24px;
+      text-align: right;
+      padding: 5px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      height: 50px;
+      width: 80px;
+      padding: 5px;
+      font-size: 20px;
+      margin: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div class="a">
+    <input type="text" placeholder="0" class="input" readonly /><br />
+
+    <button type="button" class="btn">AC</button>
+    <button type="button" class="btn">*</button>
+    <button type="button" class="btn">%</button>
+    <button type="button" class="btn">/</button><br />
+
+    <button type="button" class="btn">7</button>
+    <button type="button" class="btn">8</button>
+    <button type="button" class="btn">9</button>
+    <button type="button" class="btn">DEL</button><br />
+
+    <button type="button" class="btn">4</button>
+    <button type="button" class="btn">5</button>
+    <button type="button" class="btn">6</button>
+    <button type="button" class="btn">-</button><br />
+
+    <button type="button" class="btn">1</button>
+    <button type="button" class="btn">2</button>
+    <button type="button" class="btn">3</button>
+    <button type="button" class="btn">+</button><br />
+
+    <button type="button" class="btn">#</button>
+    <button type="button" class="btn">0</button>
+    <button type="button" class="btn">.</button>
+    <button type="button" class="btn">=</button>
+  </div>
+
+  <script>
+    const input = document.querySelector(".input");
+    const buttons = document.querySelectorAll(".btn");
+
+    buttons.forEach(button => {
+      button.addEventListener("click", () => {
+        const value = button.textContent;
+
+        if (value === "AC") {
+          input.value = "";
+        } else if (value === "DEL") {
+          input.value = input.value.slice(0, -1);
+        } else if (value === "=") {
+          try {
+            input.value = eval(input.value);
+          } catch {
+            input.value = "Error";
+          }
+        } else if (value === "#") {
+          // optional or future function
+        } else {
+          input.value += value;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
